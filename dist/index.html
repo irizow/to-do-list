@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <p class="title">Get it Done</p>
+    </div>
+    <div id="content">
+        <div id="navbar">
+            <div id="categories">
+                <div class="navlink">Today</div>
+                <div class="navlink">Week</div>
+                <div class="navlink">Projects</div>
+                <div class="navlink">Notes</div>
+            </div>
+            <div id="newproject">
+                <p>New Project</p>
+                <img id="newprojecticon" src="images/plus-large-svgrepo-com.svg">
+            </div>
+        </div>
+        <div id="taskcontainer">
+            <div id="title">
+                <p>Today</p>
+                <img id="newtaskicon" src="images/plus-frame-svgrepo-com.svg">
+            </div>
+            
+            <div class="tasks">
+                <div class="tasktitle">
+                    <img class="icon" src="images/check-square-svgrepo-com.svg">
+                    <span>Do the laundry</span>
+                </div>
+                <div class="taskicons">
+                    <img class="icon" src="images/edit-svgrepo-com.svg">
+                    <img class="icon" src="images/bin-cancel-delete-remove-trash-garbage-svgrepo-com.svg">
+                </div>
+            </div>
+            <div class="tasks"></div>
+            <div class="tasks"></div>
+            <div class="tasks"></div>
+        </div>
+        
+    </div>
+    <div id="modal">
+        <div id="newprojectcard">
+            
+                <h3>What's your next project?</h3>
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description" rows="4" cols="50">
+                </div>
+                <button id="addproject">Add project</button>
+            
+        </div>
+    </div>
+    
+    
+
+<script src="main.js"></script>
+</body>
+</html>

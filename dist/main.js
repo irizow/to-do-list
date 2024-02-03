@@ -1,0 +1,1 @@
+(()=>{"use strict";let e=document.getElementById("modal");document.getElementById("newproject").addEventListener("click",(function(){e.style.display="flex"}))})();
