@@ -1,3 +1,8 @@
+@font-face {
+    font-family: SingleDay;
+    src: url(images/SingleDay-Regular.ttf);
+}
+
 body {
     font-family: 'Courier New', Courier, monospace;
     padding: 0;
@@ -7,16 +12,19 @@ body {
 }
 
 #header {
-    background: linear-gradient(to right, rgb(221, 252, 221), rgb(174, 174, 255));
+    background-color: rgb(255, 189, 47);
+    box-shadow: 3px 2px 5px rgb(153, 163, 173);
     width: 100vw;
     height: 12vh;
     position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
     top: 0;
     left: 0;
     font-size: 30px;
     font-weight: bold;
+    
 
 }
 
@@ -33,7 +41,8 @@ body {
 }
 
 #navbar {
-    background-color: aliceblue;
+    background-color:rgb(234, 234, 234);
+    box-shadow: 3px 2px 5px rgb(153, 163, 173);
     padding: 70px 0px;
     font-size: 22px;
     position: relative;
@@ -80,12 +89,19 @@ body {
     height: 30px;
 }
 
-#taskcontainer {
-    background-color: antiquewhite;
+#mainpanel {
+    background-color: rgb(255, 255, 255);
     padding: 50px 70px;
     display: flex;
     flex-direction: column;
     gap: 40px;
+}
+
+#maincontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
 }
 
 #title {
@@ -116,6 +132,19 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+
+}
+
+.cardtitlecontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskicons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .tasks:hover {
@@ -152,12 +181,47 @@ body {
     align-items: center;
 }
 
-#newprojectcard {
+
+.newcard {
     width: 500px;
-    height: 300px;
+    height: 350px;
     background-color: white;
     padding: 40px;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 40px;
 }
+
+
+
+.projectcard {
+    font-size: 14px;
+    margin-top: 60px;
+    background-color: rgb(255, 255, 255);
+    background-image: url("images/folderblue.png");
+    background-position: top 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-size: 330px;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 332px;
+    height: 263px;
+    
+}
+
+.notecard {
+    background-color: rgb(255, 254, 199);
+    font-family: SingleDay, monospace, sans-serif;
+    font-size: 24px;
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    box-shadow: 3px 3px 3px rgb(132, 132, 111);
+    position: relative;
+    white-space: pre-wrap;
+
+}
+

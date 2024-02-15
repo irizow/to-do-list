@@ -15,7 +15,7 @@
             <div id="categories">
                 <div class="navlink">Today</div>
                 <div class="navlink">Week</div>
-                <div class="navlink">Projects</div>
+                <div class="navlink" id="projectslink">Projects</div>
                 <div class="navlink">Notes</div>
             </div>
             <div id="newproject">
@@ -23,43 +23,95 @@
                 <img id="newprojecticon" src="images/plus-large-svgrepo-com.svg">
             </div>
         </div>
-        <div id="taskcontainer">
+        <div id="mainpanel">
             <div id="title">
                 <p>Today</p>
-                <img id="newtaskicon" src="images/plus-frame-svgrepo-com.svg">
             </div>
-            
-            <div class="tasks">
-                <div class="tasktitle">
-                    <img class="icon" src="images/check-square-svgrepo-com.svg">
-                    <span>Do the laundry</span>
+            <div id="maincontainer">
+                <div class="tasks">
+                    <div class="tasktitle">
+                        <img class="icon" src="images/check-square-svgrepo-com.svg">
+                        <span>Do the laundry</span>
+                    </div>
+                    <div class="taskicons">
+                        <img class="icon" src="images/edit-svgrepo-com.svg">
+                        <img class="icon" src="images/bin-cancel-delete-remove-trash-garbage-svgrepo-com.svg">
+                    </div>
                 </div>
-                <div class="taskicons">
-                    <img class="icon" src="images/edit-svgrepo-com.svg">
-                    <img class="icon" src="images/bin-cancel-delete-remove-trash-garbage-svgrepo-com.svg">
-                </div>
+                <div class="tasks"></div>
+                <div class="tasks"></div>
+                <div class="tasks"></div>
             </div>
-            <div class="tasks"></div>
-            <div class="tasks"></div>
-            <div class="tasks"></div>
         </div>
         
     </div>
     <div id="modal">
-        <div id="newprojectcard">
-            
+        <form class="newcard" id="newprojectcard">
+                <div class="cardtitlecontainer">
                 <h3>What's your next project?</h3>
+                <img class="icon" id="xmarkproj" src="images/rectangle-xmark-solid.svg">
+            </div>
                 <div>
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title">
+                    <label for="projecttitle">Title:</label>
+                    <input type="text" name="title" id="projecttitle" required>
                 </div>
                 <div>
-                    <label for="description">Description:</label>
-                    <input type="text" name="description" id="description" rows="4" cols="50">
+                    <label for="projectdescription">Description:</label>
+                    <input type="text" name="description" id="projectdescription" required>
                 </div>
-                <button id="addproject">Add project</button>
+                <button type="button" id="addproject">Add project</button>
             
-        </div>
+            
+            </form>
+        
+
+        <form class="newcard" id="newtaskcard">
+            <div class="cardtitlecontainer">
+            <h3>Add a new task?</h3>
+            <img class="icon" id="xmarktask" src="images/rectangle-xmark-solid.svg">
+            </div>
+                <div>
+                    <label for="tasktitle">Title:</label>
+                    <input type="text" name="tasktitle" id="tasktitle" required>
+                </div>
+                <div id="dueDcontainer">
+                    <label for="duedate">Due date:</label>
+                    <input type="date" name="duedate" id="duedate" required>
+                </div>
+                <div>
+                    <label for="duetime">Due time:</label>
+                    <input type="time" name="duetime" id="duetime" required>
+                </div>
+                <div>
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority" form="newtaskcard" required>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button type="button" id="addtask">Add Task</button>
+
+            </form>
+            <form class="newcard" id="newnotecard">
+                <div class="cardtitlecontainer">
+                    <h3>Don't forget it!</h3>
+                    <img class="icon" id="xmarknote" src="images/rectangle-xmark-solid.svg">
+                </div>
+
+                <div>
+                    <label for="notetitle">Title:</label>
+                    <input type="text" name="notetitle" id="notetitle" required>
+                </div>
+
+                <div>
+                    <textarea id="notedescription" rows="8" cols="60"></textarea>  
+                </div>
+                
+                <button type="button" id="addnote">Add Note</button>
+            
+            
+            </form>
     </div>
     
     
