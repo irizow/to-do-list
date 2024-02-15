@@ -9,6 +9,7 @@ let newProjectCard = document.getElementById("newprojectcard");
 let newTaskCard = document.getElementById("newtaskcard");
 let modal = document.getElementById("modal");
 let mainContainer = document.getElementById("maincontainer");
+let isEditing = false;
 
 export let addTaskIcon = document.createElement("img");
 addTaskIcon.src = 'images/plus-frame-svgrepo-com.svg'
@@ -37,8 +38,19 @@ export function showTaskModal() {
     if(currentProject === projects[0]) {
         document.getElementById("dueDcontainer").style.display = "none";
     }
+    else {
+        document.getElementById("dueDcontainer").style.display = "block";
+    }
     modal.style.display = "flex";
     newTaskCard.style.display = "flex";
+    if(!isEditing) {
+        document.getElementById("tasktitle").value = ""
+        document.getElementById("taskdescription").value = ""
+        document.getElementById("duedate").value = ""
+        document.getElementById("duetime").value = ""
+        document.getElementById("priority").value = ""
+
+    }
 
 }
 
@@ -50,6 +62,10 @@ export function showNotesModal() {
 export function hideTaskModal() {
     modal.style.display = "none";
     newTaskCard.style.display = "none";
+    if(isEditing) {
+        isEditing = false;
+        addNewTask();
+    }
 }
 
 export function hideProjectModal(event) {
@@ -81,12 +97,16 @@ export const addNewProject = ()=>{
 } 
 
 export const addNewTask = () => {
+    if(isEditing) {
+        isEditing = false;
+    }
     let taskTitle = document.getElementById("tasktitle").value;
+    let taskDescription = document.getElementById("taskdescription").value;
     let taskDueDate = document.getElementById("duedate").value;
     let taskDueTime = document.getElementById("duetime").value;
     let taskPriority = document.getElementById("priority").value;
     let belongs = currentProject.title
-    let newTask = new CreateTask(taskTitle, taskDueDate, taskDueTime, taskPriority, false, belongs);
+    let newTask = new CreateTask(taskTitle, taskDescription, taskDueDate, taskDueTime, taskPriority, false, belongs);
     currentProject.tasks.push(newTask);
     saveData();
     
@@ -237,6 +257,9 @@ export function displayTaskCard() {
             let checkedIcon = document.createElement("img");
             checkedIcon.src = "images/square-regular.svg";
             checkedIcon.classList.add("icon");
+            let viewIcon = document.createElement("img");
+            viewIcon.src = "images/eye-regular.svg";
+            viewIcon.classList.add("icon");
             taskSpan.textContent = currentProject.tasks[i].title;
             let iconsDiv = document.createElement("div");
             iconsDiv.classList.add("taskicons");
@@ -253,9 +276,12 @@ export function displayTaskCard() {
             taskTitle.appendChild(checkedIcon);
             taskTitle.appendChild(taskSpan);
             taskDiv.appendChild(iconsDiv);
-            iconsDiv.appendChild(dueDatePrint);
+            if(currentProject.tasks[i].dueDate || currentProject.tasks[i].dueTime) {
+            iconsDiv.appendChild(dueDatePrint);}
+            iconsDiv.appendChild(viewIcon);
             iconsDiv.appendChild(editIcon);
             iconsDiv.appendChild(binIcon);
+            
 
             if(currentProject.tasks[i].checked === true) {
                 taskSpan.style.textDecoration = "line-through";
@@ -268,6 +294,23 @@ export function displayTaskCard() {
                 taskDiv.style.color = "white";
   
             }
+
+            viewIcon.addEventListener("click", ()=> {
+                let modal = document.getElementById("modal");
+                modal.style.display = "flex";
+                let taskDescriptionDiv = document.createElement("div");
+                taskDescriptionDiv.classList.add("taskdescriptiondiv");
+                if(currentProject.tasks[i].description) {
+                taskDescriptionDiv.textContent = currentProject.tasks[i].description;}
+                else {
+                    taskDescriptionDiv.textContent = "You don't have a description yet"
+                }
+                modal.appendChild(taskDescriptionDiv);
+                modal.addEventListener("click", ()=> {
+                    modal.removeChild(taskDescriptionDiv);
+                    modal.style.display = "none";
+                })
+            })
             
             binIcon.addEventListener("click", ()=>{
                 currentProject.tasks.splice(i, 1);
@@ -276,9 +319,15 @@ export function displayTaskCard() {
             })
 
             editIcon.addEventListener("click", () => {
+                isEditing = true;
+                document.getElementById("tasktitle").value = currentProject.tasks[i].title;
+                document.getElementById("taskdescription").value = currentProject.tasks[i].description;
+                document.getElementById("duedate").value = currentProject.tasks[i].dueDate;
+                document.getElementById("duetime").value = currentProject.tasks[i].dueTime;
+                document.getElementById("priority").value = currentProject.tasks[i].priority;
                 currentProject.tasks.splice(i, 1);
                 showTaskModal();
-                displayTaskCard;
+                //displayTaskCard;
             })
 
             checkedIcon.addEventListener("click", ()=> {

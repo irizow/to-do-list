@@ -184,7 +184,6 @@ body {
 
 .newcard {
     width: 500px;
-    height: 350px;
     background-color: white;
     padding: 40px;
     display: none;
@@ -223,5 +222,14 @@ body {
     position: relative;
     white-space: pre-wrap;
 
+}
+
+.taskdescriptiondiv {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 600px;
 }
 

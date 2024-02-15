@@ -27,6 +27,11 @@ export function loadEventListeners() {
             showNotesModal();
         }
         else {
+        document.getElementById("tasktitle").value = ""
+        document.getElementById("taskdescription").value =""
+        document.getElementById("duedate").value = ""
+        document.getElementById("duetime").value = ""
+        document.getElementById("priority").value = ""
             showTaskModal();
         }
     });

@@ -20,8 +20,9 @@ projects.push(today);
 projects.push(week);
 currentProject = projects[0]; }
 
-export function CreateTask(title, dueDate, dueTime, priority = "low", checked = false, belongs) {
+export function CreateTask(title, description, dueDate, dueTime, priority = "low", checked = false, belongs) {
     this.title = title;
+    this.description = description;
     this.dueDate = dueDate;
     this.dueTime = dueTime;
     this.priority = priority;
