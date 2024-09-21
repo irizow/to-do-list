@@ -3,15 +3,15 @@ import { currentProject, CreateProject, projects, CreateTask, CreateNotes, notes
 if(projects.length === 0) {
     loadDefaultProjects();}
 
-export let mainTitle = document.getElementById("title");
-let newNoteCard = document.getElementById("newnotecard");
-let newProjectCard = document.getElementById("newprojectcard");
-let newTaskCard = document.getElementById("newtaskcard");
-let modal = document.getElementById("modal");
-let mainContainer = document.getElementById("maincontainer");
-let isEditing = false;
+export const mainTitle = document.getElementById("title");
+const newNoteCard = document.getElementById("newnotecard");
+const newProjectCard = document.getElementById("newprojectcard");
+const newTaskCard = document.getElementById("newtaskcard");
+const modal = document.getElementById("modal");
+const mainContainer = document.getElementById("maincontainer");
+const isEditing = false;
 
-export let addTaskIcon = document.createElement("img");
+export const addTaskIcon = document.createElement("img");
 addTaskIcon.src = 'images/plus-frame-svgrepo-com.svg'
 addTaskIcon.id = "newtaskicon"
 
@@ -22,6 +22,13 @@ function saveData() {
     else {
     localStorage.setItem("projects", JSON.stringify(projects));
     }
+}
+
+// show navbar
+
+export function showNavBar() {
+    document.querySelector(".navbar").classList.add("active");
+
 }
 
 
@@ -82,9 +89,9 @@ export function hideNotesModal() {
 // Get data from forms
 
 export const addNewProject = ()=>{
-    let projectTitle = document.getElementById("projecttitle").value;
-    let projectDescription = document.getElementById("projectdescription").value;
-    let newProject = new CreateProject(projectTitle, projectDescription, false);
+    const projectTitle = document.getElementById("projecttitle").value;
+    const projectDescription = document.getElementById("projectdescription").value;
+    const newProject = new CreateProject(projectTitle, projectDescription, false);
     projects.push(newProject);
     saveData();
     console.log("projectsArr1: " + projects);
@@ -100,13 +107,13 @@ export const addNewTask = () => {
     if(isEditing) {
         isEditing = false;
     }
-    let taskTitle = document.getElementById("tasktitle").value;
-    let taskDescription = document.getElementById("taskdescription").value;
-    let taskDueDate = document.getElementById("duedate").value;
-    let taskDueTime = document.getElementById("duetime").value;
-    let taskPriority = document.getElementById("priority").value;
-    let belongs = currentProject.title
-    let newTask = new CreateTask(taskTitle, taskDescription, taskDueDate, taskDueTime, taskPriority, false, belongs);
+    const taskTitle = document.getElementById("tasktitle").value;
+    const taskDescription = document.getElementById("taskdescription").value;
+    const taskDueDate = document.getElementById("duedate").value;
+    const taskDueTime = document.getElementById("duetime").value;
+    const taskPriority = document.getElementById("priority").value;
+    const belongs = currentProject.title
+    const newTask = new CreateTask(taskTitle, taskDescription, taskDueDate, taskDueTime, taskPriority, false, belongs);
     currentProject.tasks.push(newTask);
     saveData();
     
@@ -118,9 +125,9 @@ export const addNewTask = () => {
 }
 
 export const addNewNote = ()=> {
-    let noteTitle = document.getElementById("notetitle").value;
-    let noteDescription = document.getElementById("notedescription").value;
-    let newNote = new CreateNotes(noteTitle, noteDescription);
+    const noteTitle = document.getElementById("notetitle").value;
+    const noteDescription = document.getElementById("notedescription").value;
+    const newNote = new CreateNotes(noteTitle, noteDescription);
     if(currentProject === "Notes") {
         notes.push(newNote);
         saveData();
@@ -137,15 +144,15 @@ export function displayNotes() {
     mainContainer.style.flexWrap = "wrap";
     console.log("displayin notes...")
 
-    for(let i = 0; i < notes.length; i++) {
+    for(const i = 0; i < notes.length; i++) {
         console.log("disp notes loop")
-        let noteCard = document.createElement("div");
+        const noteCard = document.createElement("div");
         noteCard.classList.add("notecard");
-        let noteTitle = document.createElement("h3");
+        const noteTitle = document.createElement("h3");
         noteTitle.textContent = notes[i].title;
-        let noteDescription = document.createElement("p");
+        const noteDescription = document.createElement("p");
         noteDescription.textContent = notes[i].description;
-        let binIconProj = document.createElement("img");
+        const binIconProj = document.createElement("img");
         binIconProj.src = "images/bin-cancel-delete-remove-trash-garbage-svgrepo-com.svg";
         binIconProj.classList.add("icon");
         binIconProj.style.position = "absolute";
@@ -175,24 +182,24 @@ export function displayProjectCard() {
     mainContainer.innerHTML = "";
     currentProject = undefined;
 
-    for (let i = 2; i < projects.length; i++) {
+    for (const i = 2; i < projects.length; i++) {
         projects[i].id = i;
-        let projectId = projects[i].id;
+        const projectId = projects[i].id;
         console.log("project id:" + projectId);
-        let projectCards = document.createElement("div");
+        const projectCards = document.createElement("div");
         projectCards.classList.add("projectcard");
-        let projectTitle = document.createElement("h3");
+        const projectTitle = document.createElement("h3");
         projectTitle.textContent = projects[i].title;
-        let projectDescription = document.createElement("p");
-        let projectTasksNumber = document.createElement("p");
-        let dueTasks = 0;
-        for (let j = 0; j < projects[i].tasks.length; j++) {
+        const projectDescription = document.createElement("p");
+        const projectTasksNumber = document.createElement("p");
+        const dueTasks = 0;
+        for (const j = 0; j < projects[i].tasks.length; j++) {
             if(!projects[i].tasks[j].checked) {
             dueTasks++;}
         }
         projectTasksNumber.textContent = "Due tasks: " + dueTasks;
         projectDescription.textContent = projects[i].description;
-        let binIconProj = document.createElement("img");
+        const binIconProj = document.createElement("img");
         binIconProj.style.position = "absolute";
         binIconProj.style.bottom = "55px";
         binIconProj.style.right = "10px"
@@ -206,7 +213,7 @@ export function displayProjectCard() {
         
 
         projectCards.addEventListener("click", (e) => {
-            let mainContainer = document.getElementById("maincontainer");
+            const mainContainer = document.getElementById("maincontainer");
             mainContainer.innerHTML = "";
             const projectTitle = document.getElementById("title");
             projectTitle.textContent = projects[projectId].title;
@@ -232,9 +239,9 @@ export function displayTaskCard() {
     mainContainer.style.display = "flex";
     mainContainer.innerHTML = "";
     console.log("current proj" + currentProject + currentProject.title)
-        for (let i = 0; i < currentProject.tasks.length; i++) {
-            let currentTask = currentProject.tasks[i];
-            let taskDiv = document.createElement("div");
+        for (const i = 0; i < currentProject.tasks.length; i++) {
+            const currentTask = currentProject.tasks[i];
+            const taskDiv = document.createElement("div");
             taskDiv.classList.add("tasks");
             switch (currentProject.tasks[i].priority) {
                 case "low":
@@ -251,24 +258,24 @@ export function displayTaskCard() {
 
             }
 
-            let taskTitle = document.createElement("div");
+            const taskTitle = document.createElement("div");
             taskTitle.classList.add("tasktitle");
-            let taskSpan = document.createElement("span");
-            let checkedIcon = document.createElement("img");
+            const taskSpan = document.createElement("span");
+            const checkedIcon = document.createElement("img");
             checkedIcon.src = "images/square-regular.svg";
             checkedIcon.classList.add("icon");
-            let viewIcon = document.createElement("img");
+            const viewIcon = document.createElement("img");
             viewIcon.src = "images/eye-regular.svg";
             viewIcon.classList.add("icon");
             taskSpan.textContent = currentProject.tasks[i].title;
-            let iconsDiv = document.createElement("div");
+            const iconsDiv = document.createElement("div");
             iconsDiv.classList.add("taskicons");
-            let dueDatePrint = document.createElement("span");
+            const dueDatePrint = document.createElement("span");
             dueDatePrint.textContent = "due: " + currentProject.tasks[i].dueDate + " " + currentProject.tasks[i].dueTime;
-            let editIcon = document.createElement("img");
+            const editIcon = document.createElement("img");
             editIcon.src = "images/edit-svgrepo-com.svg";
             editIcon.classList.add("icon");
-            let binIcon = document.createElement("img");
+            const binIcon = document.createElement("img");
             binIcon.src = "images/bin-cancel-delete-remove-trash-garbage-svgrepo-com.svg";
             binIcon.classList.add("icon");
             mainContainer.appendChild(taskDiv);
@@ -296,9 +303,9 @@ export function displayTaskCard() {
             }
 
             viewIcon.addEventListener("click", ()=> {
-                let modal = document.getElementById("modal");
+                const modal = document.getElementById("modal");
                 modal.style.display = "flex";
-                let taskDescriptionDiv = document.createElement("div");
+                const taskDescriptionDiv = document.createElement("div");
                 taskDescriptionDiv.classList.add("taskdescriptiondiv");
                 if(currentProject.tasks[i].description) {
                 taskDescriptionDiv.textContent = currentProject.tasks[i].description;}

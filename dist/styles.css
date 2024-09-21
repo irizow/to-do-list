@@ -3,8 +3,38 @@
     src: url(images/SingleDay-Regular.ttf);
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url(images/Montserrat-VariableFont_wght.ttf);
+}
+
+@keyframes navbarShow {
+    from{
+        left: -60%;
+    }
+    to {
+        left: 0;
+    }
+    
+}
+
+@keyframes showCard {
+    from{
+        transform: rotate(0deg);
+        opacity: 0;
+        
+    }
+
+    to {
+        transform: rotate(360deg);
+        opacity: 1;
+        
+    }
+    
+}
+
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
     padding: 0;
     margin: 0;
     height: 100vh;
@@ -15,7 +45,7 @@ body {
     background-color: rgb(255, 189, 47);
     box-shadow: 3px 2px 5px rgb(153, 163, 173);
     width: 100vw;
-    height: 12vh;
+    height: 10vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -28,6 +58,10 @@ body {
 
 }
 
+#hamburgericon {
+    display: none;
+}
+
 .title {
     margin-left: 40px;
 }
@@ -37,10 +71,10 @@ body {
     grid-template-columns: 1.2fr 4fr;
     grid-template-rows: 1fr;
     width: 100vw;
-    height: 88vh;
+    height: 90vh;
 }
 
-#navbar {
+.navbar {
     background-color:rgb(234, 234, 234);
     box-shadow: 3px 2px 5px rgb(153, 163, 173);
     padding: 70px 0px;
@@ -48,6 +82,7 @@ body {
     position: relative;
     
 }
+
 
 #categories {
     display: flex;
@@ -101,6 +136,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    padding: 10px;
 
 }
 
@@ -109,6 +145,7 @@ body {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #newtaskicon {
@@ -137,6 +174,7 @@ body {
 
 .cardtitlecontainer {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -183,12 +221,25 @@ body {
 
 
 .newcard {
+    position: relative;
     width: 500px;
     background-color: white;
     padding: 40px;
     display: none;
     flex-direction: column;
     gap: 40px;
+    animation: showCard 1000 ease-in-out forwards;
+}
+
+.newcard img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.newcard div {
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -231,5 +282,71 @@ body {
     align-items: center;
     background-color: white;
     width: 600px;
+}
+
+@media only screen and (max-width: 750px) {
+
+    #hamburgericon {
+        display: block;
+        width: 30px;
+    }
+    .navbar {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        width: 60%;
+        height: 75vh;
+        background-color: rgb(247, 247, 247);
+    }
+
+    .navbar.active {
+        display: block;
+        animation: navbarShow 1s ease-in-out forwards;
+    }
+
+    #title {
+       gap: 50vw;
+
+    }
+
+    #mainpanel {
+        padding: 30px;
+    }
+
+
+    .tasks {
+        width: auto;
+        box-sizing: border-box;
+        gap: 20px;
+    }
+
+    .icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .taskicons {
+        gap: 5px;
+    }
+
+    .newcard {
+        width: 80vw;
+    }
+
+    #projectdescription {
+        width: 50vw;
+    }
+
+    #mainpanel {
+        padding: 1rem;
+    }
+
+    .projectcard {
+        width: 232px;
+        height: 263px;
+        background-size: 250px;
+        padding-top: 25px;
+        justify-content: flex-start;
+    }
 }
 

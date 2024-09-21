@@ -1,4 +1,4 @@
-import { mainTitle, showProjectModal, showTaskModal, hideTaskModal, hideProjectModal, addNewProject, addNewTask, displayProjectCard, addTaskIcon, displayTaskCard, showNotesModal, addNewNote, hideNotesModal, displayNotes } from "./pageLoad";
+import { mainTitle, showProjectModal, showTaskModal, hideTaskModal, hideProjectModal, addNewProject, addNewTask, displayProjectCard, addTaskIcon, displayTaskCard, showNotesModal, addNewNote, hideNotesModal, displayNotes, showNavBar } from "./pageLoad";
 import { projects, currentProject } from "./CreateFunctions";
 
 
@@ -7,17 +7,18 @@ import { projects, currentProject } from "./CreateFunctions";
 export function loadEventListeners() {
     
     mainTitle.appendChild(addTaskIcon);
-    let xMarkProj = document.getElementById("xmarkproj");
-    let xMarkTask = document.getElementById("xmarktask");
-    let xMarkNote = document.getElementById("xmarknote");
-    let navButtons = document.querySelectorAll(".navlink");
-    let addProject = document.getElementById("addproject");
-    let addTask = document.getElementById("addtask");
-    let addNote = document.getElementById("addnote");
-    let newProject = document.getElementById("newproject");
-    let newTask = document.getElementById("newtaskicon");
-    let projectsLink = document.getElementById("projectslink")
+    const hamburgerIcon = document.getElementById("hamburgericon")
+    const xMarkProj = document.getElementById("xmarkproj");
+    const xMarkTask = document.getElementById("xmarktask");
+    const xMarkNote = document.getElementById("xmarknote");
+    const navButtons = document.querySelectorAll(".navlink");
+    const addProject = document.getElementById("addproject");
+    const addTask = document.getElementById("addtask");
+    const addNote = document.getElementById("addnote");
+    const newProject = document.getElementById("newproject");
+    const projectsLink = document.getElementById("projectslink")
 
+    hamburgerIcon.addEventListener("click", showNavBar);
     addProject.addEventListener("click", addNewProject);
     addTask.addEventListener("click", addNewTask);
     addNote.addEventListener("click", addNewNote);
@@ -38,6 +39,7 @@ export function loadEventListeners() {
     navButtons.forEach(function(navButton) {
         navButton.addEventListener("click", (e) => {
             mainTitle.textContent = e.target.textContent;
+            document.querySelector(".navbar").classList.remove("active");
             if(e.target.textContent === "Today") {
                 currentProject = projects[0];
                 mainTitle.appendChild(addTaskIcon);
@@ -54,7 +56,7 @@ export function loadEventListeners() {
                 mainTitle.appendChild(addTaskIcon);
                 displayNotes();
             }
-          
+
             
             displayTaskCard()
     
