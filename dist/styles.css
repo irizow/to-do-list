@@ -227,8 +227,9 @@ body {
     padding: 40px;
     display: none;
     flex-direction: column;
-    gap: 40px;
+    gap: 2rem;
     animation: showCard 1000 ease-in-out forwards;
+    border-radius: 20px;
 }
 
 .newcard img {
@@ -240,6 +241,32 @@ body {
 .newcard div {
     display: flex;
     flex-direction: column;
+}
+
+.newcard button {
+    width: 200px;
+    align-self: center;
+    padding: 0.5rem;
+    background-color: rgb(255, 204, 109);
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    color: rgba(0, 0, 0, 0.744);
+    font-size: 700;
+}
+
+.newcard button:hover {
+    border: 2px solid rgb(202, 131, 0);
+    color: black;
+    
+}
+
+
+.newcard input, .newcard textarea {
+    border-radius: 10px;
+    padding: 0.4rem;
+    border: 1px solid black;
+    margin-top: 0.5rem;
 }
 
 
