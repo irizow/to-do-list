@@ -347,6 +347,10 @@ body {
         gap: 20px;
     }
 
+    .dueDcontainer {
+        display: none;
+    }
+
     .icon {
         width: 25px;
         height: 25px;

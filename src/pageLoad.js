@@ -9,7 +9,7 @@ const newProjectCard = document.getElementById("newprojectcard");
 const newTaskCard = document.getElementById("newtaskcard");
 const modal = document.getElementById("modal");
 const mainContainer = document.getElementById("maincontainer");
-const isEditing = false;
+let isEditing = false;
 
 export const addTaskIcon = document.createElement("img");
 addTaskIcon.src = 'images/plus-frame-svgrepo-com.svg'
@@ -239,7 +239,7 @@ export function displayTaskCard() {
     mainContainer.style.display = "flex";
     mainContainer.innerHTML = "";
     console.log("current proj" + currentProject + currentProject.title)
-        for (const i = 0; i < currentProject.tasks.length; i++) {
+        for (let i = 0; i < currentProject.tasks.length; i++) {
             const currentTask = currentProject.tasks[i];
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("tasks");
