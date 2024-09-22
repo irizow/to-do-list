@@ -272,6 +272,7 @@ export function displayTaskCard() {
             iconsDiv.classList.add("taskicons");
             const dueDatePrint = document.createElement("span");
             dueDatePrint.textContent = "due: " + currentProject.tasks[i].dueDate + " " + currentProject.tasks[i].dueTime;
+            dueDatePrint.classList.add('duedateprint');
             const editIcon = document.createElement("img");
             editIcon.src = "images/edit-svgrepo-com.svg";
             editIcon.classList.add("icon");
