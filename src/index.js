@@ -4,6 +4,7 @@ import { displayTaskCard, mainTitle } from "./pageLoad";
 import { projects, currentProject } from "./CreateFunctions";
 
 
+
 if (projects.length >= 2 && mainTitle === "Projects" ) {
     displayProjectCard()
 }

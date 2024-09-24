@@ -38,7 +38,7 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
 }
 
 #header {
@@ -358,9 +358,6 @@ body {
 
     }
 
-    #mainpanel {
-        padding: 30px;
-    }
 
 
     .tasks {
@@ -396,6 +393,7 @@ body {
     #mainpanel {
         padding-right: 0;
         padding-left: 1rem;
+        max-width: 90vw;
     }
 
     .taskicons>span {
