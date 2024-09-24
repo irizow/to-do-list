@@ -9,7 +9,9 @@ const newProjectCard = document.getElementById("newprojectcard");
 const newTaskCard = document.getElementById("newtaskcard");
 const modal = document.getElementById("modal");
 const mainContainer = document.getElementById("maincontainer");
+const navBar = document.querySelector('.navbar');
 let isEditing = false;
+let isNavBar = false;
 
 export const addTaskIcon = document.createElement("img");
 addTaskIcon.src = 'images/plus-frame-svgrepo-com.svg'
@@ -26,8 +28,24 @@ function saveData() {
 
 // show navbar
 
+export function hideNavBar() {
+    if(isNavBar) {
+        navBar.classList.remove('active');
+        isNavBar = false;
+    }
+
+}
+
 export function showNavBar() {
-    document.querySelector(".navbar").classList.add("active");
+    if (!isNavBar) {
+    navBar.classList.add("active");
+    
+    }
+    else if (isNavBar) {
+        console.log('hola')
+        navBar.classList.remove('active')
+    }
+    isNavBar = !isNavBar;
 
 }
 

@@ -1,4 +1,4 @@
-import { mainTitle, showProjectModal, showTaskModal, hideTaskModal, hideProjectModal, addNewProject, addNewTask, displayProjectCard, addTaskIcon, displayTaskCard, showNotesModal, addNewNote, hideNotesModal, displayNotes, showNavBar } from "./pageLoad";
+import { mainTitle, showProjectModal, showTaskModal, hideTaskModal, hideProjectModal, addNewProject, addNewTask, displayProjectCard, addTaskIcon, displayTaskCard, showNotesModal, addNewNote, hideNotesModal, displayNotes, showNavBar, hideNavBar } from "./pageLoad";
 import { projects, currentProject } from "./CreateFunctions";
 
 
@@ -7,6 +7,7 @@ import { projects, currentProject } from "./CreateFunctions";
 export function loadEventListeners() {
     
     mainTitle.appendChild(addTaskIcon);
+    const content = document.getElementById('content');
     const hamburgerIcon = document.getElementById("hamburgericon")
     const xMarkProj = document.getElementById("xmarkproj");
     const xMarkTask = document.getElementById("xmarktask");
@@ -18,6 +19,7 @@ export function loadEventListeners() {
     const newProject = document.getElementById("newproject");
     const projectsLink = document.getElementById("projectslink")
 
+    content.addEventListener('click', hideNavBar);
     hamburgerIcon.addEventListener("click", showNavBar);
     addProject.addEventListener("click", addNewProject);
     addTask.addEventListener("click", addNewTask);
