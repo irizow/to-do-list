@@ -354,8 +354,14 @@ body {
     }
 
     #title {
-       gap: 50vw;
+       gap: 45vw;
+       width: 100%;
+       padding: 5vw;
 
+    }
+
+    #newtaskicon {
+        margin-right: 0px;
     }
 
 
